@@ -13,11 +13,11 @@ The only ports that are open are 22 (SSH) and 80 (HTTP). Let's check out the web
 It is just the Apache Ubuntu default page. There is nothing interesting in the source code so let's try brute forcing directories.  
 
 This reveals 2 interesting directories, **/admin** and **/etc**.  
-The admin page has a site for music acheivements with an interesting **Admin Shoutout** section and a downloadable archive.  
+The admin page has a site for music achievements with an interesting **Admin Shoutout** section and a downloadable archive.  
 
 <img width="716" alt="image" src="https://user-images.githubusercontent.com/114961392/207511988-16df37c7-4741-4488-ae03-4a7e28db071a.png">
 
-In the Admin Shoutout section we learn 3 user names (Josh, Adam, and Alex) and that Alex's credetials could be lying around somewhere.  
+In the Admin Shoutout section we learn 3 user names (Josh, Adam, and Alex) and that Alex's credentials could be lying around somewhere.  
 In the /etc directory are 2 files. The **passwd** file is interesting as it looks like a hash. Let's try crack it with **john**. First I will put the hash into a file then I will crack with john. You could also use **hashcat** for same result.   
 
 <img width="491" alt="image" src="https://user-images.githubusercontent.com/114961392/207513249-f4312fe4-9098-4f59-b2f8-d951f46edbb9.png">
@@ -70,6 +70,8 @@ I will try cat /root/root.txt again then exit and WOOSHKAH! We have the root fla
 ### Method 2
 If we have a look at the permissions for the backup.sh file, we can see it does not have write privileges. Since this is owned by alex, we can change this to run all privileges then change the script to **/bin/bash** to create a new shell.  
 
+<img width="336" alt="image" src="https://user-images.githubusercontent.com/114961392/207521740-9d01b7ef-de0e-4d81-84ba-18ac32b57442.png">
 
+Then we just need to run the script from sudo. Now we have root access and can capture root flag.
 
-
+<img width="249" alt="image" src="https://user-images.githubusercontent.com/114961392/207521987-9b918765-5f79-40a6-9319-941bd3ad0dd7.png">
