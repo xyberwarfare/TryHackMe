@@ -36,6 +36,7 @@ Then in the /Documents directory I found **note.txt** which reveals a username a
 
 <img width="478" alt="image" src="https://user-images.githubusercontent.com/114961392/207515652-13d8567e-61d3-493c-a744-e804ed508f7b.png">
 
+## Exploitation
 Let's try to connect through SSH with these credentials.  
 
 <img width="466" alt="image" src="https://user-images.githubusercontent.com/114961392/207516123-39b5dc27-a988-4197-a205-4259e22deef5.png">
