@@ -118,6 +118,19 @@ This has a password which looks like its encoded in base64. Let's try to decode.
 
 <img width="287" alt="image" src="https://user-images.githubusercontent.com/114961392/210302006-8121a5b1-c1e2-43bd-ace4-0936a8ae467a.png">
 
-Now we have a password for Anurodh.  
+Now we have a password for Anurodh which we can use to switch to user anurodh.  
 
+<img width="156" alt="image" src="https://user-images.githubusercontent.com/114961392/210305663-eb71deb6-5b71-4a37-87f2-cabf36633109.png">
 
+By using the **id** command, we can check what groups user anurodh is in. Looks like they are in the **docker** group which we should be able to exploit.  
+Let's have a look at [GTFOBins](https://gtfobins.github.io/gtfobins/docker/) for docker.  
+
+<img width="620" alt="image" src="https://user-images.githubusercontent.com/114961392/210305921-29b4870e-4512-4165-8b13-d585eb8f57f2.png">
+
+This shows that I can exploit docker to get to root.  
+
+<img width="608" alt="image" src="https://user-images.githubusercontent.com/114961392/210306041-800409d3-473d-4a76-b986-1e46d07a25d1.png">
+
+Now that we have root, we can go ahead and access proof.txt in the root directory and capture flag.  
+
+<img width="569" alt="image" src="https://user-images.githubusercontent.com/114961392/210306192-d84900fd-7ece-4473-93f8-7f28cfc0a6f1.png">
