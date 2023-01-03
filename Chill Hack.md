@@ -62,6 +62,8 @@ Then I will enter bash in the input field and wooshkah, we now have access to us
 
 <img width="345" alt="image" src="https://user-images.githubusercontent.com/114961392/210296781-ee15f6f6-a758-462b-ad8b-6edaef2e132d.png">
 
+## Privilege Escalation
+
 Now let's create a SSH key so we have a more secure connection. I will use ssh-keygen on my attack machine for this with command **ssh-keygen -f apaar**.  
 
 <img width="314" alt="image" src="https://user-images.githubusercontent.com/114961392/210297282-8b39996a-85f5-41b5-90f0-bac0fa863fe8.png">
