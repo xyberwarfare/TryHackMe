@@ -43,6 +43,7 @@ Exiftool, file, and steghide do not reveal anything interesting with the image h
 
 <img width="268" alt="image" src="https://user-images.githubusercontent.com/114961392/210902185-4e090a63-0580-40d2-8e9f-1d0696abb6d2.png">
 
+## Exploitation
 Strings reveals a username for FTP **(ftpuser)** and a list of passwords which only 1 is correct.  
 I can use **hydra** to brute force these. First I will make a list of the passwords then I will use that with hydra.
 **hydra -l ftpuser -P pass.txt 10.10.22.214 ftp**
@@ -78,6 +79,7 @@ This reveals a password for user gwendoline. Now I can try to connect to their u
 
 <img width="266" alt="image" src="https://user-images.githubusercontent.com/114961392/210908566-e80acb65-c940-47d5-93d6-02de143883bb.png">
 
+## Privilege Escalation
 Once I have switched accounts, now I can go ahead and capture user flag.  
 Now I will use comand **sudo -l** to check what the current user can run as root.  
 
